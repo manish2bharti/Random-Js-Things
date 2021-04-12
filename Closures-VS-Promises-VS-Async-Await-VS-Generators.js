@@ -1,5 +1,5 @@
 const api = 'https://dog.ceo/api/breeds/image/random';
-
+const fetch = require('node-fetch');
 // Closures and callbacks
 
 // function someFetchRequest(callback) {
@@ -69,7 +69,7 @@ function flow(gen){
          }
 
          res = obj;
-         obj = itr.next(obj.value)
+         obj = iter.next(obj.value)
       }
 
       return res.value

@@ -50,7 +50,7 @@ async function someAsyncFunc() {
 
 someAsyncFunc().
 then(data => {
-   console.log('async/await')
+   console.log('---async/await---')
    console.log(data)
    }
 )
@@ -83,7 +83,7 @@ const result = flow(function*(){
 })
 
 result.then(data =>{
-      console.log('async/await')
+      console.log('---Generator/yield function---')
       console.log(data)
    }
 )

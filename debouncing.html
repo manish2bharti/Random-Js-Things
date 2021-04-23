@@ -45,3 +45,13 @@
   })
   </script>
 </html>
+
+<!-- 
+The debounceFunction is used to limit the number of times any function is executed. It takes input as the func that is a function whose execution has to be limited, and delay that is the time in milliseconds. If the user types very fast, the debounceFunction will allow the execution of func only when the user has stopped typing in the textbox.
+Let’s examine the above code line by line:
+1. When the user types the first letter in the textbox, event handler or the anonymous function calls the debounceFunction with the makeAPICall function and 200 milliseconds as parameters.
+2. Inside the debounceFunction, timerId is undefined, as it has not been initialized so far. Hence, clearTimeout function will do nothing.
+3. Next, we pass func that is the makeAPICall function as a callback to the setTimeout function, with delay that is 200 milliseconds as another parameter. This means that we want the makeAPICall function to be executed after 200 milliseconds. The setTimeout function returns an integer value as its unique id, which is stored by the timerId.
+4. Now, when the user types a second letter in the textbox, again debounceFunction is called. But this time timerId is not undefined and it stores the unique id of the previous setTimeout function. Hence, when clearTimeout function is called with this timerId, it cancels the execution of the previous setTimeout function.
+5. Hence, all func or makeAPICall functions scheduled by setTimeout function due to the user typing in the textbox will be cancelled by the clearTimeout function. Only the makeAPICall function scheduled by the last letter in the textbox will execute after the specified time of 200 milliseconds.
+-->

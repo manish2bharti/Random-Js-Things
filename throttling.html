@@ -65,3 +65,12 @@
     })
   </script>
 </html>
+
+<!-- 
+Let's examine the above code line by line:
+1. When the first scroll event is fired, throttleFunction is called with the makeAPICall function and delay in milliseconds as parameters.
+2. Inside throttleFunction, timerId is undefined, as it has not been initialized yet. So, we will go ahead and schedule the func that is themakeAPICall function using the setTimeout function. The setTimeout function will execute the func or the makeAPICall function after 200 milliseconds. Now, timerId will have the unique id of this setTimeout function.
+3. When the second event for the scroll is fired, timerId is not undefined inside throttleFunction, so the function will return without scheduling the execution of makeAPICall. If timerId is not undefined it means that a setTimeout function has already been scheduled, hence we do not need to schedule another function.
+4. Thus, unless and until setTimeout executes the makeAPICall function, we will not be able to schedule another makeAPICall function using setTimeout. This ensures that the makeAPICall function will be called only once in an interval.
+5. The point to be noted is: inside the setTimeout function we have changed timerId to undefined, so once the scheduled makeAPICall function has been executed and the user again performs the scroll, throttleFunction will schedule the execution of the makeAPICall function with the help of the setTimeout function. Thus the makeAPICall function will be executed only once in a given interval. 
+-->
